@@ -1,0 +1,77 @@
+databaseChangeLog:
+  - changeSet:
+      id: V1__create_users_table
+      author: sergejspodarev (generated)
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: VARCHAR(50)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+                  nullable: false
+              - column:
+                  name: role
+                  type: VARCHAR(20)
+                  defaultValue: USER
+                  nullable: false
+
+  - changeSet:
+      id: V1__create_cards_table
+      author: sergejspodarev (generated)
+      changes:
+        - createTable:
+            tableName: cards
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: card_number_encrypted
+                  type: TEXT
+                  nullable: false
+              - column:
+                  name: owner_name
+                  type: VARCHAR(100)
+                  nullable: false
+              - column:
+                  name: expiry_date
+                  type: DATE
+                  nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(20)
+                  defaultValue: ACTIVE
+                  nullable: false
+              - column:
+                  name: balance
+                  type: DECIMAL(19, 2)
+                  defaultValue: 0
+                  nullable: false
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  nullable: false
+            constraints:
+              - foreignKey:
+                  constraintName: fk_card_user
+                  referencedTable: users
+                  referencedColumnNames: id
+                  columnNames: user_id
