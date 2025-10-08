@@ -1,0 +1,16 @@
+/Users/sergejspodarev/Desktop/BankApp/bank_rest-main/src/main/java/com/example/bankcards/exception/UsernameAlreadyTakenException.java
+/Users/sergejspodarev/Desktop/BankApp/bank_rest-main/src/main/java/com/example/bankcards/entity/Role.java
+/Users/sergejspodarev/Desktop/BankApp/bank_rest-main/src/main/java/com/example/bankcards/repository/UserRepository.java
+/Users/sergejspodarev/Desktop/BankApp/bank_rest-main/src/main/java/com/example/bankcards/BankCardApplication.java
+/Users/sergejspodarev/Desktop/BankApp/bank_rest-main/src/main/java/com/example/bankcards/entity/Card.java
+/Users/sergejspodarev/Desktop/BankApp/bank_rest-main/src/main/java/com/example/bankcards/service/UserService.java
+/Users/sergejspodarev/Desktop/BankApp/bank_rest-main/src/main/java/com/example/bankcards/dto/UserDTO.java
+/Users/sergejspodarev/Desktop/BankApp/bank_rest-main/src/main/java/com/example/bankcards/entity/Status.java
+/Users/sergejspodarev/Desktop/BankApp/bank_rest-main/src/main/java/com/example/bankcards/entity/User.java
+/Users/sergejspodarev/Desktop/BankApp/bank_rest-main/src/main/java/com/example/bankcards/config/SecurityConfig.java
+/Users/sergejspodarev/Desktop/BankApp/bank_rest-main/src/main/java/com/example/bankcards/exception/SameUsernameException.java
+/Users/sergejspodarev/Desktop/BankApp/bank_rest-main/src/main/java/com/example/bankcards/security/CustomUserDetailsService.java
+/Users/sergejspodarev/Desktop/BankApp/bank_rest-main/src/main/java/com/example/bankcards/security/CustomUserDetails.java
+/Users/sergejspodarev/Desktop/BankApp/bank_rest-main/src/main/java/com/example/bankcards/dto/LoginUserDTO.java
+/Users/sergejspodarev/Desktop/BankApp/bank_rest-main/src/main/java/com/example/bankcards/controller/UserController.java
+/Users/sergejspodarev/Desktop/BankApp/bank_rest-main/src/main/java/com/example/bankcards/exception/UserNotFoundException.java

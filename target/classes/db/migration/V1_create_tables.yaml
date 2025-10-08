@@ -1,7 +1,12 @@
 databaseChangeLog:
   - changeSet:
-      id: V1__create_users_table
-      author: sergejspodarev (generated)
+      id: 1
+      author: sergejspodarev
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: users
       changes:
         - createTable:
             tableName: users
@@ -22,16 +27,22 @@ databaseChangeLog:
               - column:
                   name: password
                   type: VARCHAR(255)
-                  nullable: false
+                  constraints:
+                    nullable: false
               - column:
                   name: role
                   type: VARCHAR(20)
-                  defaultValue: USER
-                  nullable: false
+                  constraints:
+                    nullable: false
 
   - changeSet:
-      id: V1__create_cards_table
-      author: sergejspodarev (generated)
+      id: 2
+      author: sergejspodarev
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: cards
       changes:
         - createTable:
             tableName: cards
@@ -46,32 +57,61 @@ databaseChangeLog:
               - column:
                   name: card_number_encrypted
                   type: TEXT
-                  nullable: false
+                  constraints:
+                    nullable: false
               - column:
                   name: owner_name
                   type: VARCHAR(100)
-                  nullable: false
+                  constraints:
+                    nullable: false
               - column:
                   name: expiry_date
                   type: DATE
-                  nullable: false
+                  constraints:
+                    nullable: false
               - column:
                   name: status
                   type: VARCHAR(20)
-                  defaultValue: ACTIVE
-                  nullable: false
+                  constraints:
+                    nullable: false
               - column:
                   name: balance
                   type: DECIMAL(19, 2)
                   defaultValue: 0
-                  nullable: false
+                  constraints:
+                    nullable: false
               - column:
                   name: user_id
                   type: BIGINT
-                  nullable: false
+                  constraints:
+                    nullable: false
             constraints:
               - foreignKey:
                   constraintName: fk_card_user
-                  referencedTable: users
+                  referencedTableName: users
                   referencedColumnNames: id
                   columnNames: user_id
+
+  - changeSet:
+      id: 3
+      author: sergejspodarev
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: users
+        - sqlCheck:
+            sql: "SELECT COUNT(*) FROM users WHERE username = 'admin'"
+            expectedResult: "0"
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: admin
+              - column:
+                  name: password
+                  value: $2a$12$5V8uJ9O6p2qQ7w8K9v0YZeR8L9M1N2B3C4D5E6F7G8H9I0J1K2L3M4N5O6P
+              - column:
+                  name: role
+                  value: ROLE_ADMIN

@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Student_db
+    username: sergejspodarev
+    password: SpodarevSergey2004
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  liquibase:
+    change-log: classpath:/db/migration/changelog-master.yaml  # ПРАВИЛЬНЫЙ ПУТЬ!
+    enabled: true
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    com.bank: DEBUG
+    org.hibernate.SQL: DEBUG
+
+app:
+  jwt:
+    secret: mySecretKeyForJWTGenerationInBankSystem2024
+    expiration: 86400000
+  encryption:
+    key: myEncryptionKeyForBankCards123
