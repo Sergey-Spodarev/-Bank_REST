@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/users") // ✅ Исправлен путь (множественное число)
+@RequestMapping("/api/v1/users")
 @Tag(name = "User Management", description = "APIs for managing users")
 @SecurityRequirement(name = "bearerAuth")
 public class UserController {
@@ -119,7 +119,6 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    // ✅ Дополнительный endpoint для обратной совместимости
     @GetMapping("/all")
     @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Get all users (no pagination)", description = "ADMIN only - Get all users without pagination")
